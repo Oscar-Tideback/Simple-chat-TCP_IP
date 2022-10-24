@@ -43,7 +43,7 @@ public class Chat extends JFrame implements Runnable{
             while (true){
                 client = (Client) reader.readObject();
                 txtChatArea.append(client.getAlias() + " says: " + client.getMessage() + "\r\n");
-                if(!checkIfOnline(client.getAlias()))                                               // BUG! This check should be on serverside
+                if(!checkIfOnline(client.getAlias()))                                               
                     txtName.append(client.getAlias()  + "\n");
             }
         }  catch (IOException | ClassNotFoundException e) {
@@ -190,11 +190,5 @@ public class Chat extends JFrame implements Runnable{
         writer.writeObject(client);
         writer.reset();
         txtMessage.setText("");
-    }
-    public void someFunction(String data) {
-        //smallOperation();
-        new Thread(() -> {
-            // doSomething long running
-        }).start();
     }
 }
